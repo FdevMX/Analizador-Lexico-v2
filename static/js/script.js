@@ -21,13 +21,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     clearButton.addEventListener('click', function() {
         textarea.value = '';
-        document.querySelector('#resultTable tbody').innerHTML = '';
+        document.querySelector('.result-table-body-container table tbody').innerHTML = '';
+        document.querySelector('.table-body-container table tbody').innerHTML = '';
+        document.getElementById('tokenTypesTableContainer').style.display = 'none';
+        document.getElementById('counters').style.display = 'none';
+        
         // Resetear y ocultar los contadores y la tabla
         document.getElementById('tokenCount').textContent = '0';
         document.getElementById('tokenTypesCount').textContent = '0';
         countersDiv.style.display = 'none';
         tokenTypesTable.style.display = 'none';
-        tokenTypesTable.querySelector('tbody').innerHTML = '';
         fileInput.value = '';
     });
 
@@ -67,14 +70,16 @@ function analizarCodigo() {
             alert(data.error);
             return;
         }
-        const tableBody = document.querySelector('#resultTable tbody');
-        tableBody.innerHTML = '';
+        
+        // Actualizar la tabla de resultados
+        const resultTableBody = document.querySelector('.result-table-body-container table tbody');
+        resultTableBody.innerHTML = '';
         
         // Objeto para contar la frecuencia de cada tipo de token
         const tokenTypesFrequency = {};
         
         data.tokens.forEach(token => {
-            const row = tableBody.insertRow();
+            const row = resultTableBody.insertRow();
             row.insertCell(0).textContent = token[0];
             row.insertCell(1).textContent = token[1];
             row.insertCell(2).textContent = token[2];
@@ -89,14 +94,14 @@ function analizarCodigo() {
         document.getElementById('counters').style.display = 'block';
 
         // Actualizar la tabla de tipos de tokens
-        const tokenTypesTableBody = document.querySelector('#tokenTypesTable tbody');
+        const tokenTypesTableBody = document.querySelector('.table-body-container table tbody');
         tokenTypesTableBody.innerHTML = '';
         for (const [tokenType, frequency] of Object.entries(tokenTypesFrequency)) {
             const row = tokenTypesTableBody.insertRow();
             row.insertCell(0).textContent = tokenType;
             row.insertCell(1).textContent = frequency;
         }
-        document.getElementById('tokenTypesTable').style.display = 'table';
+        document.getElementById('tokenTypesTableContainer').style.display = 'block';
     })
     .catch(error => {
         console.error('Error:', error);
