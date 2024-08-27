@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const pasteButton = document.querySelector('.paste');
     const clearButton = document.querySelector('.clear');
     const fileInput = document.querySelector('#fileInput');
+    const countersDiv = document.querySelector('#counters');
 
+    // Ocultar los contadores al cargar la página
+    countersDiv.style.display = 'none';
 
     pasteButton.addEventListener('click', async function() {
         try {
@@ -17,6 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
     clearButton.addEventListener('click', function() {
         textarea.value = '';
         document.querySelector('#resultTable tbody').innerHTML = '';
+        // Resetear y ocultar los contadores
+        document.getElementById('tokenCount').textContent = '0';
+        document.getElementById('tokenTypesCount').textContent = '0';
+        countersDiv.style.display = 'none';
+        // Resetear el input de archivo
+        fileInput.value = '';
     });
 
     fileInput.addEventListener('change', function(e) {
@@ -27,10 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const reader = new FileReader();
         reader.onload = function(e) {
             textarea.value = e.target.result;
+            // Resetear el input de archivo después de leer
+            fileInput.value = '';
         };
         reader.onerror = function(e) {
             console.error("Error al leer el archivo:", e);
             alert("Hubo un error al leer el archivo.");
+            // Resetear el input de archivo en caso de error
+            fileInput.value = '';
         };
         reader.readAsText(file);
     });
@@ -59,6 +72,11 @@ function analizarCodigo() {
             row.insertCell(1).textContent = token[1];
             row.insertCell(2).textContent = token[2];
         });
+
+        // Actualizar y mostrar los contadores
+        document.getElementById('tokenCount').textContent = data.token_count;
+        document.getElementById('tokenTypesCount').textContent = data.token_types_count;
+        document.getElementById('counters').style.display = 'block';
     })
     .catch(error => {
         console.error('Error:', error);
