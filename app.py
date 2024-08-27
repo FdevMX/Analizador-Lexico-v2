@@ -17,31 +17,33 @@ def tokenize(code):
     line_number = 1
     position = 0
     tokens = []
-
+    token_types = set()
     while position < len(code):
         match = get_token(code, position)
         if not match:
             raise RuntimeError(f'Error de Análisis en posición {position}')
-
         for name, value in match.groupdict().items():
             if value:
                 if name != 'ESPACIO':
                     tokens.append((name, value, line_number))
+                    token_types.add(name)
                 break
         position = match.end()
-
         if position < len(code) and code[position] == '\n':
             line_number += 1
-
-    return tokens
+    return tokens, len(tokens), len(token_types)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         code = request.form.get('code', '')
         try:
-            tokens_list = tokenize(code)
-            return jsonify({'tokens': tokens_list})
+            tokens_list, token_count, token_types_count = tokenize(code)
+            return jsonify({
+                'tokens': tokens_list,
+                'token_count': token_count,
+                'token_types_count': token_types_count
+            })
         except RuntimeError as e:
             return jsonify({'error': str(e)}), 400
     return render_template('index.html')
