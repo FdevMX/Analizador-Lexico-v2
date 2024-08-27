@@ -148,6 +148,20 @@ button:hover {
     background-color: hsl(47.9, 95.8%, 46%); /* Color más oscuro para el hover */
 }
 
+#counters {
+    display: none; /* Oculto por defecto */
+    background-color: rgba(245, 179, 230, 0.37); /* Fondo blanco con transparencia */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centrado */
+    max-width: 300px; /* Ancho máximo */
+    text-align: center;
+}
+#counters p {
+    margin: 5px 0;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
