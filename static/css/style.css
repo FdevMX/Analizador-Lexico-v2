@@ -162,37 +162,85 @@ button:hover {
     margin: 5px 0;
 }
 
-#tokenTypesTable {
+#tokenTypesTableContainer {
     display: none; /* Oculto por defecto */
     margin: 20px auto;
-    border-collapse: collapse;
     width: 100%;
     max-width: 500px;
-}
-#tokenTypesTable th, #tokenTypesTable td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-#tokenTypesTable th {
-    background-color: #f2f2f2;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
     border-radius: var(--radius);
     overflow: hidden;
 }
 
-th, td {
-    border: 1px solid hsl(var(--border));
-    padding: 12px;
-    text-align: left;
+#tokenTypesTable {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-th {
-    background-color: hsl(var(--muted));
-    font-weight: bold;
+#tokenTypesTable th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.table-body-container {
+    max-height: 250px; /* Altura para aproximadamente 5 filas */
+    overflow-y: auto;
+}
+
+.table-body-container table {
+    width: 100%;
+}
+
+.table-body-container td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Asegurarse de que las columnas del cuerpo se alineen con las del encabezado */
+#tokenTypesTable th,
+.table-body-container td {
+    width: 50%;
+}
+
+
+#resultTableContainer {
+    margin: 20px auto;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+#resultTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#resultTable th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.result-table-body-container {
+    max-height: 300px; /* Ajusta esto según cuántas filas quieras mostrar inicialmente */
+    overflow-y: auto;
+}
+
+.result-table-body-container table {
+    width: 100%;
+}
+
+.result-table-body-container td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Asegurarse de que las columnas del cuerpo se alineen con las del encabezado */
+#resultTable th,
+.result-table-body-container td {
+    width: 33.33%; /* Distribuye el ancho equitativamente entre las tres columnas */
 }

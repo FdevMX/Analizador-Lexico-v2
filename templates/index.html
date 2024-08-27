@@ -39,29 +39,42 @@
                 <p>Tipos de tokens encontrados: <span id="tokenTypesCount">0</span></p>
             </div>
            
-            <table id="tokenTypesTable">
-                <thead>
-                    <tr>
-                        <th>Tipo de Token</th>
-                        <th>Frecuencia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Aquí se insertarán las filas dinámicamente -->
-                </tbody>
-            </table>
+            <div id="tokenTypesTableContainer">
+                <table id="tokenTypesTable">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Token</th>
+                            <th>Frecuencia</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="table-body-container">
+                    <table>
+                        <tbody>
+                            <!-- Aquí se insertarán las filas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <table id="resultTable">
-                <thead>
-                    <tr>
-                        <th>Token</th>
-                        <th>Lexema</th>
-                        <th>Línea</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div id="resultTableContainer">
+                <table id="resultTable">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Lexema</th>
+                            <th>Línea</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="result-table-body-container">
+                    <table>
+                        <tbody>
+                            <!-- Aquí se insertarán las filas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
 </body>
