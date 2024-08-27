@@ -1,0 +1,168 @@
+:root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 44%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 56rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+p {
+    color: hsl(var(--muted-foreground));
+}
+
+main {
+    width: 100%;
+}
+
+.code-input {
+    border: 2px solid hsl(var(--border));
+    border-radius: var(--radius);
+    height: 192px;
+    padding: 0; /* Cambiado de 8px a 0 */
+    background-color: white;
+    margin-bottom: 16px;
+    overflow: hidden; /* Añadido para ocultar scrollbars innecesarios */
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    padding: 8px; /* Movido el padding aquí */
+    box-sizing: border-box; /* Añadido para incluir el padding en el tamaño total */
+    overflow-y: auto; /* Permite scroll vertical solo cuando es necesario */
+}
+
+/* Pseudoclase :focus para cambiar el borde del textarea cuando está focalizado */
+.code-input:focus-within {
+    border-color: hsl(221.2, 83.2%, 53.3%); /* Cambia el color del borde al color que prefieras */
+    /* box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); Añade un resplandor alrededor del borde (opcional) */
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+button {
+    padding: 14px 16px;
+    border: none;
+    border-radius: var(--radius);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido (icono y texto) horizontalmente */
+    gap: 8px; /* Espacio entre el icono y el texto */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves para el fondo y sombra */
+}
+
+button i {
+    color: white; /* Asegura que los íconos sean de color blanco */
+}
+
+.analyze {
+    background-color: hsl(221.2, 83.2%, 53.3%);
+}
+
+.paste {
+    background-color: hsl(142.1, 76.2%, 36.3%);
+}
+
+.clear {
+    background-color: hsl(0, 72%, 51%);
+}
+
+.file {
+    background-color: hsl(47.9, 95.8%, 53.1%);
+}
+
+/* Efecto de hover para cada botón */
+button:hover {
+    opacity: 0.6; /* Efecto de atenuación del botón al pasar el ratón */
+}
+
+.analyze:hover {
+    background-color: hsl(221.2, 83.2%, 43%); /* Color más oscuro para el hover */
+}
+
+.paste:hover {
+    background-color: hsl(142.1, 76.2%, 46%); /* Color más oscuro para el hover */
+}
+
+.clear:hover {
+    background-color: hsl(0, 72%, 41%); /* Color más oscuro para el hover */
+}
+
+.file:hover {
+    background-color: hsl(47.9, 95.8%, 46%); /* Color más oscuro para el hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid hsl(var(--border));
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: hsl(var(--muted));
+    font-weight: bold;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico</title>
+    <script src="https://kit.fontawesome.com/b3bf7eb232.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Analizador Léxico</h1>
+            <p>Ingrese el código</p>
+        </header>
+        <main>
+            <div class="code-input">
+                <textarea id="codeInput" placeholder="Ingrese el código aquí..."></textarea>
+            </div>
+            <div class="button-grid">
+                <button class="analyze" onclick="analizarCodigo()">
+                    <i class="fa-solid fa-magnifying-glass"></i> Analizar
+                </button>
+                <button class="paste">
+                    <i class="fa-solid fa-clipboard"></i> Pegar
+                </button>
+                <button class="clear">
+                    <i class="fa-solid fa-trash"></i> Limpiar
+                </button>
+                <button class="file" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-solid fa-file"></i> Archivo
+                </button>
+                <input type="file" id="fileInput" style="display: none;" accept=".py,.txt,.csv,.java,.json,.cpp,.c,.h">
+            </div>
+            
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Lexema</th>
+                        <th>Línea</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>
