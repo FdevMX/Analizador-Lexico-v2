@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearButton = document.querySelector('.clear');
     const fileInput = document.querySelector('#fileInput');
     const countersDiv = document.querySelector('#counters');
+    const tokenTypesTable = document.querySelector('#tokenTypesTable');
 
-    // Ocultar los contadores al cargar la página
+    // Ocultar los contadores y la tabla al cargar la página
     countersDiv.style.display = 'none';
+    tokenTypesTable.style.display = 'none';
 
     pasteButton.addEventListener('click', async function() {
         try {
@@ -20,11 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     clearButton.addEventListener('click', function() {
         textarea.value = '';
         document.querySelector('#resultTable tbody').innerHTML = '';
-        // Resetear y ocultar los contadores
+        // Resetear y ocultar los contadores y la tabla
         document.getElementById('tokenCount').textContent = '0';
         document.getElementById('tokenTypesCount').textContent = '0';
         countersDiv.style.display = 'none';
-        // Resetear el input de archivo
+        tokenTypesTable.style.display = 'none';
+        tokenTypesTable.querySelector('tbody').innerHTML = '';
         fileInput.value = '';
     });
 
@@ -66,17 +69,34 @@ function analizarCodigo() {
         }
         const tableBody = document.querySelector('#resultTable tbody');
         tableBody.innerHTML = '';
+        
+        // Objeto para contar la frecuencia de cada tipo de token
+        const tokenTypesFrequency = {};
+        
         data.tokens.forEach(token => {
             const row = tableBody.insertRow();
             row.insertCell(0).textContent = token[0];
             row.insertCell(1).textContent = token[1];
             row.insertCell(2).textContent = token[2];
+            
+            // Contar la frecuencia de cada tipo de token
+            tokenTypesFrequency[token[0]] = (tokenTypesFrequency[token[0]] || 0) + 1;
         });
 
         // Actualizar y mostrar los contadores
         document.getElementById('tokenCount').textContent = data.token_count;
         document.getElementById('tokenTypesCount').textContent = data.token_types_count;
         document.getElementById('counters').style.display = 'block';
+
+        // Actualizar la tabla de tipos de tokens
+        const tokenTypesTableBody = document.querySelector('#tokenTypesTable tbody');
+        tokenTypesTableBody.innerHTML = '';
+        for (const [tokenType, frequency] of Object.entries(tokenTypesFrequency)) {
+            const row = tokenTypesTableBody.insertRow();
+            row.insertCell(0).textContent = tokenType;
+            row.insertCell(1).textContent = frequency;
+        }
+        document.getElementById('tokenTypesTable').style.display = 'table';
     })
     .catch(error => {
         console.error('Error:', error);
