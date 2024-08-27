@@ -162,6 +162,22 @@ button:hover {
     margin: 5px 0;
 }
 
+#tokenTypesTable {
+    display: none; /* Oculto por defecto */
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 500px;
+}
+#tokenTypesTable th, #tokenTypesTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+#tokenTypesTable th {
+    background-color: #f2f2f2;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
